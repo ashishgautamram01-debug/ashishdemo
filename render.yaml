@@ -1,0 +1,18 @@
+services:
+  # Backend API Service
+  - type: web
+    name: imovies-backend
+    runtime: node
+    plan: free
+    rootDir: server
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        sync: false # Set securely in Render dashboard (e.g. MongoDB Atlas URI)
+      - key: JWT_SECRET
+        generateValue: true
